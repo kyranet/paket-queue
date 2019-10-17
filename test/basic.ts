@@ -42,6 +42,38 @@ ava('get(multiple-call | nulls)', async test => {
 	]);
 });
 
+ava('get(multiple-call | batch)', async test => {
+	test.plan(2);
+
+	const paket = new Queue<string, Value>(getAllThrows, 5);
+	const values = await Promise.all([
+		paket.run('foo', id => get(id)),
+		paket.run('foo', id => get(id))
+	]);
+	test.deepEqual(values, [
+		{ id: 'foo', data: 0 },
+		{ id: 'foo', data: 0 }
+	]);
+	test.true(values[0] === values[1], 'In batches, the values are references.');
+});
+
+ava('get(multiple-call | batch | nulls)', async test => {
+	test.plan(2);
+
+	const paket = new Queue<string, Value>(getAllThrows, 5);
+	const values = await Promise.all([
+		paket.run('foo', id => get(id)),
+		paket.run('foo', id => get(id)),
+		paket.run('whoops', id => get(id))
+	]);
+	test.deepEqual(values, [
+		{ id: 'foo', data: 0 },
+		{ id: 'foo', data: 0 },
+		null
+	]);
+	test.true(values[0] === values[1], 'In batches, the values are references.');
+});
+
 ava('getAll(multiple-call)', async test => {
 	const paket = new Queue<string, Value>(getAll, 2);
 	const values = await Promise.all([
@@ -68,4 +100,40 @@ ava('getAll(multiple-call | nulls)', async test => {
 		{ id: 'bar', data: 1 },
 		null
 	]);
+});
+
+ava('getAll(multiple-call | batch)', async test => {
+	test.plan(2);
+
+	const paket = new Queue<string, Value>(getAll, 2);
+	const values = await Promise.all([
+		paket.run('foo', id => getThrows(id)),
+		paket.run('foo', id => getThrows(id)),
+		paket.run('bar', id => getThrows(id))
+	]);
+	test.deepEqual(values, [
+		{ id: 'foo', data: 0 },
+		{ id: 'foo', data: 0 },
+		{ id: 'bar', data: 1 }
+	]);
+	test.true(values[0] === values[1], 'In batches, the values are references.');
+});
+
+ava('getAll(multiple-call | batch | nulls)', async test => {
+	test.plan(2);
+
+	const paket = new Queue<string, Value>(getAll, 2);
+	const values = await Promise.all([
+		paket.run('foo', id => getThrows(id)),
+		paket.run('foo', id => getThrows(id)),
+		paket.run('bar', id => getThrows(id)),
+		paket.run('whoops', id => getThrows(id))
+	]);
+	test.deepEqual(values, [
+		{ id: 'foo', data: 0 },
+		{ id: 'foo', data: 0 },
+		{ id: 'bar', data: 1 },
+		null
+	]);
+	test.true(values[0] === values[1], 'In batches, the values are references.');
 });

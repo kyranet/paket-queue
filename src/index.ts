@@ -32,9 +32,12 @@ export class Queue<K, T> {
 	protected handlePrevious(id: K, wrapped: WrappedCallback<K, T>) {
 		const previous = this.runs.get(id);
 		if (previous) {
-			// TODO(kyranet): Fix duplicated bulk
-			previous.resolve = wrapped.resolve;
-			previous.reject = wrapped.reject;
+			const previousResolve = previous.resolve;
+			const currentResolve = wrapped.resolve;
+			const previousReject = previous.reject;
+			const currentReject = wrapped.reject;
+			wrapped.resolve = value => { previousResolve(value); currentResolve(value); };
+			wrapped.reject = error => { previousReject(error); currentReject(error); };
 		}
 	}
 
