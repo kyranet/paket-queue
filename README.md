@@ -59,6 +59,22 @@ class Provider {
 Now when you run `Provider#get` 10 times or more in the same tick, no call to `connection.get` will be done, instead,
 all the ids will be sent to `Provider#getAll`.
 
+## Batching
+
+Another feature of `paket-queue`, is that it supports batching:
+
+```javascript
+const results = await Promise.all([
+	paket.run('foo', id => connection.get(id)),
+	paket.run('foo', id => connection.get(id)),
+	paket.run('foo', id => connection.get(id))
+]);
+```
+
+This will internally count as a single item, and the return will be an array of 3 elements, all of which will be
+references of (meaning `results[0] === results[1] && results[1] === results[2]`), as `get` is only called once and the
+same value is passed to all of them.
+
 ## Extending
 
 While this library only exports the `Queue` class, it is possible to extend its functionality, e.g. increasing the timer
