@@ -2,6 +2,7 @@
   "name": "paket-queue",
   "version": "0.0.1",
   "description": "A lightweight batch queue packer library written in TypeScript.",
+  "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "repository": "https://github.com/kyranet/paket-queue",
   "author": "Antonio Román <kyradiscord@gmail.com>",
