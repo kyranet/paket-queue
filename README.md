@@ -90,12 +90,12 @@ extensions.
 
 ## Author
 
-**paket** © [kyranet][author], released under the
+**paket-queue** © [kyranet][author], released under the
 [MIT][license] License.
 Authored and maintained by kyranet.
 
 > Github [kyranet][author] - Twitter [@kyranet_][twitter]
 
-[license]: https://github.com/kyranet/paket/blob/master/LICENSE
+[license]: https://github.com/kyranet/paket-queue/blob/master/LICENSE
 [author]: https://github.com/kyranet
 [twitter]: https://twitter.com/kyranet_
