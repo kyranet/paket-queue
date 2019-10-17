@@ -136,6 +136,7 @@ export class Queue<K, T> {
 
 		this.runs.clear();
 	}
+
 }
 
 export type Callback<K, T> = (id: K) => T | null | Promise<T | null>;
