@@ -1,0 +1,67 @@
+{
+  "name": "paket-queue",
+  "version": "0.0.1",
+  "description": "A lightweight batch queue packer library written in TypeScript.",
+  "main": "dist/index.js",
+  "repository": "https://github.com/kyranet/paket-queue",
+  "author": "Antonio Román <kyradiscord@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "queue",
+    "batch",
+    "debounce",
+    "paket"
+  ],
+  "bugs": {
+    "email": "kyradiscord@gmail.com",
+    "url": "https://github.com/kyranet/paket-queue/issues"
+  },
+  "private": false,
+  "badges": [
+    {
+      "description": "Total Alerts",
+      "href": "https://img.shields.io/lgtm/alerts/g/kyranet/paket-queue.svg?logo=lgtm&logoWidth=18",
+      "url": "https://lgtm.com/projects/g/kyranet/paket-queue/alerts/"
+    },
+    {
+      "description": "Dependabot Status",
+      "href": "https://api.dependabot.com/badges/status?host=github&repo=kyranet/paket-queue",
+      "url": "https://dependabot.com"
+    }
+  ],
+  "eslintConfig": {
+    "extends": "bamboo"
+  },
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "tsc -p .",
+    "test": "ava",
+    "test:lint": "eslint --ext ts src test",
+    "lint": "eslint --fix --ext ts src test"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "ava": "^2.4.0",
+    "eslint": "^6.5.1",
+    "eslint-config-bamboo": "^3.0.0",
+    "source-map-support": "^0.5.13",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  },
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "test/**/*.ts",
+      "!test/lib"
+    ],
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ]
+  }
+}
