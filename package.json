@@ -1,6 +1,6 @@
 {
   "name": "paket-queue",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A lightweight batch queue packer library written in TypeScript.",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
