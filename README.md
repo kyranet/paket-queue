@@ -40,8 +40,7 @@ This is simple with `paket-queue`:
 // Or `const { Queue } = require('paket-queue');` in CommonJS
 import { Queue } from 'paket-queue';
 
-// Or `module.exports = class Provider {` in CommonJS
-export default class Provider {
+class Provider {
 
 	connection = new DatabaseConnection(/* arguments */);
 	queue = new Queue(ids => this.getAll(ids), 10);
