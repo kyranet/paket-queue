@@ -1,5 +1,7 @@
 # paket-queue
 
+Deprecated in favour of [`@klasa/request-handler`](https://github.com/dirigeants/request-handler).
+
 <div align="center">
 	<p>
 		<a href="https://www.npmjs.com/package/paket-queue">
