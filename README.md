@@ -22,7 +22,7 @@
 		<a href="https://nodei.co/npm/paket-queue/"><img src="https://nodei.co/npm/paket-queue.png?downloads=true&stars=true" alt="npm installnfo" /></a>
 	</p>
 	<p>
-		Deprecated in favour of <a href="https://github.com/dirigeants/request-handler"><code>@klasa/request-handler</code></a>.
+		Deprecated in favour of <a href="https://github.com/dirigeants/request-handler"><code>@klasa/request-handler</code></a>
 	</p>
 </div>
 
